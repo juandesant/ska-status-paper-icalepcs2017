@@ -1,0 +1,123 @@
+\documentclass[a4paper,
+               % boxit,        % check whether paper is inside correct margins
+               biblatex,       % biblatex is used
+               keeplastbox,    % flushend option: not to un-indent last line in References
+               % nospread,     % flushend option: do not fill with whitespace to balance columns
+               % hyphens,      % allow \url to hyphenate at "-" (hyphens)
+               % xetex,        % use XeLaTeX to process the file
+               % luatex,       % use LuaLaTeX to process the file
+               ]{jacow-2_1}    % uses jacow-2_1 to better support BibLaTeX
+               
+%
+% CHANGE SEQUENCE OF GRAPHICS EXTENSION TO BE EMBEDDED
+% ----------------------------------------------------
+% test for XeTeX where the sequence is by default eps-> pdf, jpg, png, pdf, ...
+%    and the JACoW template provides JACpic2v3.eps and JACpic2v3.jpg which
+%    might generates errors, therefore PNG and JPG first
+%
+\makeatletter%
+	\ifboolexpr{bool{xetex}}
+	 {\renewcommand{\Gin@extensions}{.pdf,%
+	                    .png,.jpg,.bmp,.pict,.tif,.psd,.mac,.sga,.tga,.gif,%
+	                    .eps,.ps,%
+	                    }}{}
+\makeatother
+
+% CHECK FOR XeTeX/LuaTeX BEFORE DEFINING AN INPUT ENCODING
+% --------------------------------------------------------
+%   utf8  is default for XeTeX/LuaTeX 
+%   utf8  in LaTeX only realises a small portion of codes
+%
+\ifboolexpr{bool{xetex} or bool{luatex}} % test for XeTeX/LuaTeX
+ {}                                      % input encoding is utf8 by default
+ {\usepackage[utf8]{inputenc}}           % switch to utf8
+
+\usepackage[USenglish]{babel}			 
+
+\usepackage[final]{pdfpages}
+\usepackage{multirow}
+\usepackage{ragged2e}
+ 
+\addbibresource{ska-status-icalepcs2017.bib}
+
+%
+% command for typesetting a \section like word
+%
+\newcommand\SEC[1]{\textbf{\uppercase{#1}}}
+
+%%
+%%   Lengths for the spaces in the title
+%%   \setlength\titleblockstartskip{..}  %before title, default 3pt
+%%   \setlength\titleblockmiddleskip{..} %between title + author, default 1em
+%%   \setlength\titleblockendskip{..}    %afterauthor, default 1em
+
+%\copyrightspace %default 1cm. arbitrary size with e.g. \copyrightspace[2cm]
+
+% testing to fill the copyright space
+%\usepackage{eso-pic}
+%\AddToShipoutPictureFG*{\AtTextLowerLeft{\textcolor{red}{COPYRIGHTSPACE}}}
+
+
+\begin{document}
+
+\title{Status of the Square Kilometre Array}
+
+\author{
+	J. Santander-Vela\thanks{j.santander-vela@skatelescope.org},
+	M. Bartolini, M. Deegan, L. Pivetta, N. Rees,\\
+	SKA Organisation, Macclesfield, United Kingdom
+}
+	
+\maketitle
+
+%
+\begin{abstract}
+   The Square Kilometre Array (SKA) is a global project to build a multi-purpose radio telescope that will play a major role in answering key questions in modern astrophysics and cosmology. It will be one of a small number of cornerstone observatories around the world that will provide astrophysicists and cosmologists with a transformational view of the Universe. Two major goals of the SKA is to study the history and role of neutral Hydrogen in the Universe from the dark ages to the present-day, and to employ pulsars as probes of fundamental physics. Since 2008, the global radio astronomy community has been engaged in the development of the SKA and is now nearing the end of the \emph{Pre-Construction} phase. This talk will give an overview of the current status of the SKA and the plans for construction, focusing on the computing and software aspects of the project.
+\end{abstract}
+
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+Each author should submit the PDF file and all source
+files (text and figures) to enable the paper to be
+reconstructed if there are processing difficulties.
+\cite{SKA-TEL-SKO-0000002_v3} defines the baseline 
+design capabilities of the SKA.
+
+% section introduction (end)
+
+
+\section{Conclusion} % (fold)
+\label{sec:conclusion}
+Any conclusions should be in a separate section directly preceding
+the \SEC{Acknowledgement}, \SEC{Appendix}, or \SEC{References} sections, in that
+order.
+
+% section conclusion (end)
+
+\section{Acknowledgement} % (fold)
+\label{sec:acknowledgement}
+Any acknowledgement should be in a separate section directly preceding
+the \SEC{References} or \SEC{Appendix} section.
+
+% section acknowledgement (end)
+
+\section{Appendix} % (fold)
+\label{sec:appendix}
+Any appendix should be in a separate section directly preceding
+the \SEC{References} section. If there is no \SEC{References} section,
+this should be the last section of the paper.
+
+% section appendix (end)
+
+
+%\section*{References} % (fold)
+\label{sec:references}
+\printbibliography
+
+% section references (end)
+
+
+
+
+\end{document}

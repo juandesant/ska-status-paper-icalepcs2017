@@ -240,7 +240,7 @@ Given the challenge to achieve that performance, and the experience that CERN ha
 
 % section ska1_data_flow_and_processing (end)
 
-\section{SKA1 Software, Control System Guidelines, and SAFe} % (fold)
+\section{SKA1 Software, Control System Guidelines, and Processes} % (fold)
 \label{sec:ska1_software_control_system_guidelines_SAFe}
 
 The SKA1 telescopes will be composed of millions of parts that will be controlled, monitored, and orchestrated by the subsystem called Telescope Manager. 
@@ -278,21 +278,23 @@ In the case of SKA1-Low, below the MCCS a number of TANGO devices will exist to 
 
 The SDP is primarily a High-Performance Computer, and as such tools such as Open Stack will be used for monitoring and orchestrating the software processes that need to be launched as a result of observation processing, and a graph execution engine (the SDP Execution Framework), based on Apache Hadoop and/or Apache Spark, and orchestrated by Apache Mesos or Apache Marathon will be used, insted of using TANGO directly for orchestration of those processes. However, pools of ProcessBlocks TANGO devices will be created that will help to provide observation progress monitoring through TANGO.
 
-The complexity of a system that will encompass, when developed, several millions lines of code, induces both programmatic and functional risk. In order to avoid that, the SKAO has recently decided to adopt the Scaled Agile Framework\footnote{http://www.scaledagileframework.com} (SAFe).
+The complexity of a system that will encompass, when developed, several millions lines of code, induces both programmatic and functional risk. In order to avoid that, the SKAO has recently decided to adopt the Scaled Agile Framework\footnote{http://www.scaledagileframework.com} (SAFe\textregistered).
 
-We have started processes to make the core concepts of Agile in general, and SAFe in particular, an integral part of the software development plans of the SKA consortia. The balance between the traditional strict System Engineering approaches of large construction projects, and the agile principles for continuous integration and delivery of software is not trivial to achieve, and will be the focus of the SKAO for the future, together with the successful completion of the subsystem- and system-level CDRs.
+We have started processes to make the core concepts of Agile in general, and SAFe in particular, an integral part of the software development plans of the SKA consortia. The balance between the traditional strict, gated System Engineering approaches of large construction projects, and the agile principles for continuous integration and delivery of software is not trivial to achieve, and will be the focus of the SKAO for the future, together with the successful completion of the subsystem- and system-level CDRs.
 
 Figure~\ref{fig:FRAPL01f10} shows the SAFe processes for software engineering. The bottom part of it represents the work of a single Agile team, while the middle part represents the Agile Solution Train (ART) that combines the work of several Agile teams, and the top part represents the Solution Train, that combines several ARTs.
 
-\label{sec:software_engineering_in_ska}
+\label{sec:scaled_agile_framework}
 \begin{figure*}[!tb]
   \centering
     \includegraphics[width=\textwidth]{FRAPL01f10.pdf}
-  \caption{Diagram of Scaled Agile Framework (SAFe) processes for software engineering.}
+  \caption{Diagram of Scaled Agile Framework (SAFe\textregistered) processes for software engineering.}
   \label{fig:FRAPL01f10}
 \end{figure*}
 
 The main tool for synchronising the processes of the Agile Release Trains, and the individual agile teams is the cadence of the sprints and Program Increments (PIs), and the sharing of a common backlog that the teams self-organise every Program Increment, so that work dependencies, and programme/solution needs are resolved at every Program Increment. Feedback from the solution intent is flown down from Model Based System Engineering artifacts at the top, to the backlogs for the ARTs, and the individual teams, with always a representation of that solution intent in the form of Product Owners, System Engineers, and Solution Architects.
+
+We're in the process of deriving what the first PIs will be from the current AIV roll-out plan, so that we can provide the functionality that is required precisely when it is needed.
 
 % section ska1_control_hierarchy_and_control_system_guidelines (end)
 
@@ -301,11 +303,11 @@ The main tool for synchronising the processes of the Agile Release Trains, and t
 \label{sec:conclusion}
 The SKA1 telescopes are just a few months from their Critical Design Reviews, and that of their subsystems, and their construction will prove challenging both in terms of organisational readiness, and the complexity of the systems being built.
 
-As part of the derisking of the software systems, and managing that complexity, we have opted by several standard solutions:
+As part of the derisking of the software systems, and managing that complexity, we have opted for several standard solutions:
 
 \begin{itemize}
-	\item using a horizontal harmonisation approach to control systems, and choosing TANGO as the control framework and middleware for all subsystems of the SKA1 telescopes; TANGO provides the right level of hierarchical control and encapsulation, and easy access to all parts of the control system, combined with a rich software library and vibrant community;
-	\item using agile processes for the software development during construction, and use a recognised framework such as SAFe to successfully scale agile practices to an industrial level solution, with continuous integration at team and solution levels;
+	\item using a horizontal harmonisation approach to control systems, choosing TANGO as the control framework and middleware for all subsystems of the SKA1 telescopes; TANGO provides the right level of hierarchical control and encapsulation, and easy access to all parts of the control system, combined with a rich software library and a vibrant community;
+	\item using an industry supported agile process framework such as SAFe to successfully scale agile practices to a large scale solution, with continuous integration at team and solution levels;
 \end{itemize}
 
 We expect to be able to have a construction proposal and an IGO in Q1 2019, and to start procurement in late 2019, with the first antennas on the ground around late 2022, and a complete deployment in 2026, with the ramp to operations starting soon after that.

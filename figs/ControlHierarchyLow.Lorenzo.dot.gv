@@ -1,0 +1,115 @@
+digraph ControlHierarchy_Low {
+	//label="SKA1-Low Telescope Control Hierarchy"
+	labeljust="l"
+	labelloc="t"
+	splines="true";
+	fontname = Palatino;
+	fontsize = 16;
+	
+	/* Entities */
+	node [fontname="San Francisco Text", fontsize=16, shape=rect];
+	edge [fontname="Palatino"]
+	
+	// LFAA
+	subgraph cluster_lfaa {
+		edge [color=blue];
+		
+		LFAASN   [label="LFAA\nStation 1..n"];
+		MCCS    [label="LFAA\nMCCS"]
+		
+		color = blue;
+		style = dotted;
+		labeljust="l";
+		label="LFAA\nFacility";
+		
+		{ rank=same; LFAASN; MCCS}
+	}
+	
+	// CSP
+	subgraph cluster_csp {
+		edge [color=blue];
+		
+		CSPLMC [label="CSP\nLMC"];
+		CBF    [label="CSP\nCBF"];
+		PSS    [label="CSP\nPSS"];
+		PST    [label="CSP\nPST"];
+		
+		CSPLMC -> CBF;
+		CSPLMC -> PSS;
+		CSPLMC -> PST;
+		
+		color = blue;
+		style = dotted;
+		labeljust="l";
+		label = "CSP\nFacility"
+	}
+	
+	// SDP
+	subgraph cluster_sdp {
+		edge [color=blue];
+		
+		SDPLMC [label="SDP\nLMC"];
+		LTP    [label="SDP\nLTP"];
+		DELIV  [label="SDP\nDELIV"];
+		DP     [label="SDP\nDP"]
+		
+		SDPLMC -> DP;
+		SDPLMC -> LTP;
+		SDPLMC -> DELIV;
+		
+		color = blue;
+		style = dotted;
+		labeljust="l";
+		label = "SDP\nFacility"
+	}
+	// SADT
+	subgraph cluster_sadt {
+		edge [color=blue];
+		
+		NMGR   [label="SADT\nNGMR"];
+		DDBH   [label="SADT\nDDBH"];
+		CSPSDP [label="SADT\nCSP-SDP"];
+		NSDN   [label="SADT\nNSDN"];
+		SATLMC [label="SAT\nLMC"];
+
+		NMGR   -> DDBH;
+		NMGR   -> CSPSDP;
+		NMGR   -> NSDN;
+	
+		color = blue;
+		style = dotted;
+		labeljust="r";
+		label = "SADT\nFacility"
+	}
+	
+	// INFRA
+	subgraph cluster_infra {
+		
+		INFRALMC  [label="INFRA\nLMC"];
+	
+		color = blue;
+		style = dotted;
+		labeljust="r";
+		label = "INFRA\nFacility"
+	}
+	
+	/* Relationships */
+	TELMGT -> LFAASN [penwidth=2.0, label="TBD LFAA\nstations"];
+	TELMGT -> MCCS;
+	
+	TELMGT -> CSPLMC;
+	TELMGT -> SDPLMC;
+	TELMGT -> NMGR;
+	TELMGT -> SATLMC;
+	TELMGT -> INFRALMC;
+	
+	
+	// TM
+	subgraph cluster_5 {
+		TELMGT [label="TELMGT", shape=diamond, style=rounded];
+	
+		color = black; style = dotted;
+		label = "TM\nFacility"; 
+	}	
+
+}
